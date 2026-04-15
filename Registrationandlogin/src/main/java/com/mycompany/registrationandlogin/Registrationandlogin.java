@@ -46,7 +46,7 @@ public class Registrationandlogin {
 //Amethod to check the cellphone number complexity
 
     public boolean checkCellPhoneNumber(String cellphone) {
-        String pattern = "^\\+27\\d{9}$";
+        String pattern = "^\\+27\\d{9}$";//[Baeldung, 2024]
 
         if (cellphone.matches(pattern)) {
             System.out.println("The cellphone is successfully added");
@@ -128,3 +128,6 @@ public class Registrationandlogin {
         System.out.println("LOGIN SUCCESSFUL WELCOME BACK!");
     }
 }
+/*
+Baeldung, 2024. Validate phone number with Java Regex. [online] available at: <https://www.baeldung.com/java-regex-validate-phone-numbers> {accessed on : 15 april 2026}
+*/
