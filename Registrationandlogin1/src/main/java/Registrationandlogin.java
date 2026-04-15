@@ -1,23 +1,23 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- */
-
-package com.mycompany.registrationandlogin1;
 
 import java.util.Scanner;
+
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 
 /**
  *
  * @author lab_services_student
  */
-public class Registrationandlogin1 {
-//created a method to save the details of the user
-     public String savedUserName;
+public class Registrationandlogin {
+    //creating variables to save what the user has entered in the registration part.
+
+    public String savedUserName;
     public String savedPassword;
     public String savedCellphone;
+//method to check the username registered by the User if it met the requirements provided.
 
-    //boolean method to check if the username has met the requirements, it returns a successful message if they are correct 
-    //and failed it incorrect
     public boolean checkUserName(String userName) {
         if (userName.contains("_") && userName.length() <= 5) {
             System.out.println("Username successfully captured");
@@ -26,14 +26,16 @@ public class Registrationandlogin1 {
             System.out.println("Username is incorrectly formatted");
             return false;
         }
-    }//boolean method to check if the password has met the requirements. 
+    }
+//a method to check the password if it met the requirements 
+
     public boolean checkPasswordComplexity(String password) {
         String upper = ".*[A-Z].*";
         String digit = ".*[0-9].*";
         String special = ".*[!@#$%^&*].*";
 
-        if (password.matches(upper) && password.matches(digit) &&
-            password.matches(special) && password.length() >= 8) {
+        if (password.matches(upper) && password.matches(digit)
+                && password.matches(special) && password.length() >= 8) {
 
             System.out.println("The password is successfully captured");
             return true;
@@ -42,7 +44,8 @@ public class Registrationandlogin1 {
             return false;
         }
     }
-//boolean method to check if cellphone number has been correctly entered.
+//Amethod to check the cellphone number complexity
+
     public boolean checkCellPhoneNumber(String cellphone) {
         String pattern = "^\\+27\\d{9}$";
 
@@ -54,7 +57,8 @@ public class Registrationandlogin1 {
             return false;
         }
     }
-// creating a string registerUser to check the registration of the user, it returns false if incorrectly entered.
+//A method for register user to check the details registered
+
     public String registerUser(String userName, String password, String cellphone) {
         if (!checkUserName(userName)) {
             return "Username incorrectly formatted";
@@ -65,18 +69,20 @@ public class Registrationandlogin1 {
         if (!checkCellPhoneNumber(cellphone)) {
             return "Cellphone incorrectly formatted";
         }
-       //created a class that saves the user's details for login later
+
         savedUserName = userName;
         savedPassword = password;
         savedCellphone = cellphone;
-       //method that returns a success message when details are correctly entered. 
+
         return "User successfully registered";
     }
-       // loginUser method to check if login details match the registration details.
-      public boolean loginUser(String userName, String password) {
+// method to check for the login user
+
+    public boolean loginUser(String userName, String password) {
         return savedUserName.equals(userName) && savedPassword.equals(password);
     }
-      //method to return. 
+//Method to check the return login status.
+
     public String returnLoginStatus(boolean success, String firstName, String lastName) {
         if (success) {
             return "Welcome back " + firstName + " " + lastName + "!";
@@ -85,52 +91,42 @@ public class Registrationandlogin1 {
         }
     }
 
-
-        public static void main(String[] args) {
-            //
-            Scanner input = new Scanner(System.in);
-          Registrationandlogin1 system = new Registrationandlogin1();
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        Registrationandlogin system = new Registrationandlogin();
 
         System.out.println("===== REGISTRATION =====");
-       //Tell the user to enter their first name. 
+//tell user to enter their first name
         System.out.print("First name: ");
         String firstName = input.nextLine();
-        
-        //tell the user to enter their last name.
+//tell user to enetr their last name
         System.out.print("Last name: ");
         String lastName = input.nextLine();
-        
-        //Tell the user to enter their username.
+//tell the user to enter their username
         System.out.print("Username: ");
         String userName = input.nextLine();
-        
-        //Tell the user to enter their password.
+//Tell the user to enter their password
         System.out.print("Password: ");
         String password = input.nextLine();
-
-        //tell the user to enter their cellphone number.
+//tell the user to enter their cellphone number
         System.out.print("Cellphone (+27...): ");
         String cellphone = input.nextLine();
-
-        //method to call the username,password and cellphone number.
+//method to print out user details
         System.out.println(system.registerUser(userName, password, cellphone));
 
         System.out.println("\n===== LOGIN =====");
-       
-        //put the username of login.
+//tell user to enter their login username
         System.out.print("Username: ");
         String loginUser = input.nextLine();
-        
-        //put for the password to login.
+//tell the user to enter their password
         System.out.print("Password: ");
         String loginPass = input.nextLine();
-        
-       //checks if the login details are correct.
+//boolean method to check if they entered the correct details to log in
         boolean success = system.loginUser(loginUser, loginPass);
-        
-         //returns the login statuses.
+//method to print out what they entered
         System.out.println(system.returnLoginStatus(success, firstName, lastName));
+
+        System.out.println("LOGIN SUCCESSFUL WELCOME BACK!");
     }
 }
-        
-    
+
