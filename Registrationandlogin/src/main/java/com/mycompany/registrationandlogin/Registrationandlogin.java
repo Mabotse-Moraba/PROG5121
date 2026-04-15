@@ -89,7 +89,7 @@ public class Registrationandlogin {
             return "Incorrect username or password";
         }
     }
-
+//Main method for the registration and log in
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         Registrationandlogin system = new Registrationandlogin();
